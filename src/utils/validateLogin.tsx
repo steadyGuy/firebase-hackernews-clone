@@ -3,9 +3,11 @@ import { IForm } from '../components/Auth/Login'
 export interface IErrors {
   email?: string;
   password?: string;
+  description?: string;
+  url?: string;
 }
 
-const validateLogin = (form: IForm) => {
+const validateLogin = (form: any) => {
   let errors: IErrors = {};
 
   if (!form.email) {

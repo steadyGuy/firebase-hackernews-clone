@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react'
 import firebase from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import useFormValidation from '../../hooks/useFormValidation';
+import validateLogin from '../../utils/validateLogin';
 
 
 export type IForm = {
@@ -32,7 +33,7 @@ export const Login = () => {
   }
 
   const { handleChange, handleBlur, handleSubmit, form, setForm, errors, isSubmitting } =
-    useFormValidation(formInitialState, authenticateUser);
+    useFormValidation<IForm>(formInitialState, validateLogin, authenticateUser);
 
   const handleChangeAuth = () => {
     setLogin(prev => !prev);
