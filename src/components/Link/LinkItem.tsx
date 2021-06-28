@@ -1,12 +1,12 @@
 import React, { FC, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ILink } from './CreateLink'
-import formatDistance from 'date-fns/formatDistance'
+import formatDistance from 'date-fns/formatDistance';
 import { FirebaseContext } from '../../context/firebaseContext'
 
 type LinkItemProps = {
   link: ILink;
-  index: number;
+  index?: number;
   showCount: boolean;
 }
 
@@ -51,7 +51,8 @@ export const LinkItem: FC<LinkItemProps> = ({ link, index, showCount }) => {
         </div>
         <div className="ml1">
           <div>
-            {link.description} <span className="link">({link.url})</span>
+            <a href={link.url} className="black no-underline">{link.description}</a>
+            <span className="link">({link.url})</span>
           </div>
           <div className="f6 lh-copy gray">
             {link.votes.length} votes by {link.postedBy.name} {formatDistance(Date.now(), link.created)}

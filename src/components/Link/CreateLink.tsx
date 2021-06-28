@@ -23,7 +23,14 @@ export interface ILink {
     name: string | null;
   },
   votes: any[],
-  comments: any[],
+  comments: {
+    created: number | Date;
+    text: string;
+    postedBy: {
+      id: string;
+      name: string;
+    }
+  }[],
   created: number | Date;
 }
 
